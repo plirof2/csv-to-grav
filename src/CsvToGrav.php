@@ -9,7 +9,8 @@ class CsvToGrav
 {
     private static $requiredFields = array(
         'title',
-        'date',
+        //'date',
+        'price',
         'html'
     );
 
@@ -135,7 +136,9 @@ class CsvToGrav
             $dirPath = self::uniqueDir(File::path($this->outputDir, $post->slug));
             File::createDir($dirPath);
 
-            $filePath = File::path($dirPath, 'item.md');
+            //$filePath = File::path($dirPath, 'item.md');
+            $filePath = File::path($dirPath, 'shoppingcart_product.md');
+            
 
             if (file_put_contents($filePath, $post->getGravFile())) {
                 $created++;

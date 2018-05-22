@@ -5,7 +5,7 @@
  */
 class Post
 {
-    private static $dateFormat = 'm/d/Y g:ia';
+    private static $dateFormat = 'd/m/Y g:ia';
 
     public function __construct(array $data, array $metaData = array(), $isPublished = false)
     {
@@ -22,13 +22,14 @@ class Post
     private function provision()
     {
         $this->slug = slugifier\slugify($this->title);
+        $this->date='10/5/2018';
         $this->date = date(self::$dateFormat, strtotime($this->date));
 
-        $categories = self::explodeList($this->category);
-        $this->category = strtolower($categories[0]);
+        //$categories = self::explodeList($this->category);
+        //$this->category = strtolower($categories[0]);
 
-        $tags = self::explodeList($this->tag);
-        $this->tag = array_map('strtolower', $tags);
+        //$tags = self::explodeList($this->tag);
+        //$this->tag = array_map('strtolower', $tags);
 
         return $this;
     }
@@ -48,14 +49,15 @@ class Post
         $data = array(
             'published' => $this->isPublished,
             'title'     => $this->title,
-            'slug'      => $this->slug,
-            'date'      => $this->date,
-            'taxonomy' => array(
-                'author'   => $this->author,
-                'category' => $this->category,
-                'tag'      => $this->tag
-            ),
-            'metadata' => $this->getAllMetaData()
+            'price'=> $this->price,
+            //'slug'      => $this->slug,
+            //'date'      => $this->date,
+            //'taxonomy' => array(
+                //'author'   => $this->author,
+                //'category' => $this->category,
+                //'tag'      => $this->tag
+            //),
+            //'metadata' => $this->getAllMetaData()
         );
 
         return trim(Symfony\Component\Yaml\Yaml::dump($data)) . "\n";
