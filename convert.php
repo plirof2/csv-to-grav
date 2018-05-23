@@ -4,7 +4,7 @@ date_default_timezone_set('UTC');
 
 include 'vendor/autoload.php';
 
-$conversion = new CsvToGrav('example.csv');
+$conversion = new CsvToGrav('PARAFARMAKAGtC2.csv');
 
 // Set a directory for all posts.
 $conversion->setOutputDir('user/pages/01.blog');
@@ -13,9 +13,9 @@ $conversion->setOutputDir('user/pages/01.blog');
 $conversion->setColumnMap(array(
     'title'    => 'title_field',    // string
     //'date'     => 'example_date_field',     // string
-    'html'     => 'example_html_field',     // string
-    'price'     => 'price_field',     // string
-    'author'   => 'example_author_field',   // string
+    'html'     => 'description',     // string
+    'price'     => 'price',     // string
+    'author'   => 'category',   // string
     //'category' => 'example_category_field', // comma-separated list
     //'tag'      => 'example_tag_field'       // comma-separated list
 ));
